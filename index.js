@@ -1,6 +1,7 @@
 require('dotenv').config()
 const Twit = require('twit')
 const _ = require('lodash')
+const fs = require('fs')
 
 const T = new Twit({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
@@ -11,6 +12,8 @@ const T = new Twit({
 })
 const getFollowers = require('twitter-followers')
 
+// const op = 'jfix'
+// const oe = 'cmarchand7276'
 const oe = 'OECD'
 const op = 'OECD_pubs'
 
@@ -60,7 +63,11 @@ getFollowers(T, op)
                             url: user.url
                         })
                     })
-                    console.log(commonFollowers)
+                    // console.log(commonFollowers)
+                    fs.writeFile(`${oe}-${op}-common-followers.json`, JSON.stringify(commonFollowers), (err) => {
+                      if (err) throw err
+                      console.log('Result file successfully saved.')
+                    })
                 })
             })
         })
