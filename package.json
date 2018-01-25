@@ -4,6 +4,7 @@
   "main": "./lib/intersecting-twitter-followers",
   "dependencies": {
     "dotenv": "^4.0.0",
+    "json2csv": "^3.11.5",
     "lodash": "^4.17.4",
     "twit": "^2.2.9",
     "twitter-followers": "^0.1.2"
